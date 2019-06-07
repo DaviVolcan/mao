@@ -1,8 +1,15 @@
 #include <Arduino.h>
+#include <Servo.h>
+Servo myservo;  // create servo object to control a servo
+int pos = 0;    // variable to store the servo position
+
+
 #define a 500
 void setup() {
+    myservo.attach(13);  // attaches the servo on pin 9 to the servo object
+
   Serial.begin(115200);
-  pinMode(13, OUTPUT);
+
   pinMode(12, OUTPUT);
   pinMode(11, OUTPUT);
   pinMode(10, OUTPUT);
@@ -85,39 +92,46 @@ void loop() {
       digitalWrite(10, 0 );
       digitalWrite(11, 0 );
       break;
+      case 'l':
+      myservo.write(170);              // tell servo to go to position in variable 'pos'
+      break;
+       case 'o':
+      myservo.write(65);              // tell servo to go to position in variable 'pos'
+      break;
+      
 
     case 'p':
+      digitalWrite(6, 1 );
+      digitalWrite(7, 0 );
       digitalWrite(2, 1 );
       digitalWrite(3, 0 );
       digitalWrite(4, 1 );
       digitalWrite(5, 0 );
-      digitalWrite(6, 1 );
-      digitalWrite(7, 0 );
       digitalWrite(8, 1 );
       digitalWrite(9, 0 );
       digitalWrite(10, 1 );
       digitalWrite(11, 0 );
       delay(10*a);
+      digitalWrite(6, 0 );
+      digitalWrite(7, 1 );
       digitalWrite(2, 0 );
       digitalWrite(3, 1 );
       digitalWrite(4, 0 );
       digitalWrite(5, 1 );
-      digitalWrite(6, 0 );
-      digitalWrite(7, 1 );
       digitalWrite(8, 0 );
       digitalWrite(9, 1 );
       digitalWrite(10, 0 );
       digitalWrite(11, 1 );
             delay(5.5*a);
 
-      digitalWrite(2, 1);
+      digitalWrite(6, 1);
+      digitalWrite(7, 0 );
+      delay(a);
+      digitalWrite(2, 1 );
       digitalWrite(3, 0 );
       delay(a);
       digitalWrite(4, 1 );
       digitalWrite(5, 0 );
-      delay(a);
-      digitalWrite(6, 1 );
-      digitalWrite(7, 0 );
       delay(a);
       digitalWrite(8, 1 );
       digitalWrite(9, 0 );
@@ -125,14 +139,14 @@ void loop() {
       digitalWrite(10, 1 );
       digitalWrite(11, 0 );
       delay(a);
+      digitalWrite(6, 0 );
+      digitalWrite(7, 1 );
+      delay(a);
       digitalWrite(2, 0 );
       digitalWrite(3, 1 );
       delay(a);
       digitalWrite(4, 0 );
       digitalWrite(5, 1 );
-      delay(a);
-      digitalWrite(6, 0 );
-      digitalWrite(7, 1 );
       delay(a);
       digitalWrite(8, 0 );
       digitalWrite(9, 1 );
@@ -140,14 +154,14 @@ void loop() {
       digitalWrite(10, 0 );
       digitalWrite(11, 1 );
       delay(a - 100);
-      digitalWrite(2, 0 );
-      digitalWrite(3, 0 );
-      delay(a + 100);
-      digitalWrite(4, 0 );
-      digitalWrite(5, 0 );
-      delay(a);
       digitalWrite(6, 0 );
       digitalWrite(7, 0 );
+      delay(a + 100);
+      digitalWrite(2, 0 );
+      digitalWrite(3, 0 );
+      delay(a);
+      digitalWrite(4, 0 );
+      digitalWrite(5, 0 );
       delay(a);
       digitalWrite(8, 0 );
       digitalWrite(9, 0 );
